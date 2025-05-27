@@ -69,38 +69,47 @@ RIFT Theory addresses these issues by removing dependence on force-based models 
 **ODT\_Algorithm.pseudo**
 
 ```
+Algorithm ODT_Traversal
+
 Input:
-  U_i = current universe thread (defined by foundational constants φ_i)
-  U_j = target universe thread (must share at least one orthogonal axis with U_i)
-  I = semantic intent payload for dimensional binding
+  U_i ← Current universe thread (defined by foundational constants φ_i)
+  U_j ← Target universe thread (must share at least one orthogonal axis with U_i)
+  I   ← Semantic intent payload for dimensional binding
 
 Output:
-  SUCCESS → U_j accessed with intent I preserved
-  FAILURE → return to U_i with error state
+  SUCCESS if traversal to U_j with intent I is completed
+  FAILURE with return to U_i and appropriate error state
 
-Procedure:
-1. Orthogonal Alignment Phase:
-  a. Verify U_i and U_j share a defined orthogonal axis
-     IF not orthogonal → ABORT with Misalignment_Error
-  b. Calculate traversal vector representing 90° dimensional shift
-  c. Establish entangled anchors between U_i and U_j
-     Anchor quantum coherence for state stability
+BEGIN
 
-2. Thread Pinning Phase (RIFT Ecosystem):
-  a. Bind intent I to deterministic thread executor
-  b. Assign thread to processor aligned with dimensional vector
-  c. Polymerize the execution binding for traceability
+  // Phase 1: Orthogonal Alignment
+  IF NOT OrthogonalAxisExists(U_i, U_j) THEN
+    RETURN FAILURE ← Misalignment_Error
+  ENDIF
 
-3. Traversal Execution Phase:
-  a. Initiate coherence validation across entangled anchors
-     IF coherence check fails → ABORT with Decoherence_Error
-  b. Execute orthogonal shift using traversal vector
-  c. Verify causality consistency in U_j
-     IF causality breaks detected → ROLLBACK to U_i
+  traversal_vector ← Compute90DegreeShift(U_i, U_j)
+  entangled_anchor ← EstablishQuantumCoherence(U_i, U_j)
 
-4. Return SUCCESS with bound thread
-```
+  // Phase 2: Thread Pinning (RIFT Ecosystem)
+  pinned_thread ← BindIntentToThread(I)
+  AssignThreadToProcessor(pinned_thread, traversal_vector)
+  PolymerizeBinding(pinned_thread)
 
+  // Phase 3: Traversal Execution
+  IF NOT ValidateQuantumCoherence(entangled_anchor) THEN
+    RETURN FAILURE ← Decoherence_Error
+  ENDIF
+
+  ExecuteOrthogonalTraversal(traversal_vector)
+
+  IF NOT ValidateCausality(U_j, I) THEN
+    RollbackTo(U_i)
+    RETURN FAILURE ← Causality_Error
+  ENDIF
+
+  RETURN SUCCESS ← ThreadBound(U_j, I)
+
+END
 ---
 
 **Conclusion**
